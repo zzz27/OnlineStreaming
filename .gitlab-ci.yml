@@ -1,0 +1,91 @@
+image: registry.secoder.net/tool/deployer
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  script:
+    - export BUILD_IMAGE_NAME=$CI_REGISTRY_IMAGE
+    - export BUILD_IMAGE_TAG=$CI_COMMIT_REF_SLUG
+    - export BUILD_IMAGE_USERNAME=$CI_REGISTRY_USER
+    - export BUILD_IMAGE_PASSWORD=$CI_REGISTRY_PASSWORD
+    - deployer build
+
+# # Job template for test stage
+# .test:
+#   image: nikolaik/python-nodejs:python3.8-nodejs12
+#   stage: test
+
+#   cache:
+#     key: ${CI_COMMIT_REF_SLUG}
+#     paths:
+#       - frontend/node_modules/
+
+#   before_script:
+#     - pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements_dev.txt
+#     - cd frontend/
+#     - npm config set registry https://registry.npm.taobao.org
+#     - npm install
+#     - cd ..
+
+result-test:
+  image: python:3.8.5
+  stage: test
+
+  before_script:
+    - pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pytest-django
+    - pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
+  script:
+    - export DJANGO_SETTINGS_MODULE=app.settings
+    - python manage.py makemigrations
+    - python manage.py migrate
+    - python manage.py test
+    - pytest
+
+style-test:
+  image: python:3.8.5
+  stage: test
+
+  before_script:
+    - pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pylint
+  script:
+    - pylint --fail-under=7.5 ./meeting
+    - PYLINT_RET=$?
+    - exit $PYLINT_RET
+
+eslint-test:
+  image: node
+  stage: test
+
+  before_script:
+    - cd frontend
+    - npm config rm proxy
+    - npm config rm https-proxy
+    - npm config set registry http://registry.npm.taobao.org/
+    - npm i eslint
+  script:
+    - node_modules/eslint/bin/eslint.js .
+
+sonarqube-check:
+  image:
+    name: sonarsource/sonar-scanner-cli:latest
+    entrypoint: [""]
+
+  stage: test
+
+  script:
+    - sonar-scanner -X -Dsonar.qualitygate.wait=true -Dsonar.projectKey=UnNamed:FinalProject  -Dsonar.sources=. -Dsonar.host.url=https://sonarqube.secoder.net -Dsonar.login=2945bbb8274f77db85f27518ed99faa32cc88bd4
+
+  allow_failure: true
+  when: manual
+
+deploy:
+  stage: deploy
+  script:
+    - deployer dyno replace $CI_PROJECT_NAME "$CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG" "$REGISTRY_USER" "$REGISTRY_PWD"
+  when: manual
+  # only:
+  #   - master

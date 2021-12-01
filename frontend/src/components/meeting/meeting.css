@@ -1,0 +1,260 @@
+.meeting {
+  display: flex;
+  flex: 1;
+  width:100%;
+  position: absolute;
+  top:56px;
+  bottom:0;
+}
+.auth-inner2 {
+display: flex;
+flex: 1;
+width:92%;
+position: absolute;
+top:80px;
+bottom:20px;
+left: 0px;
+right: 0px;
+margin: auto;
+background: #ffffff;
+box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+padding: 40px 55px 45px 55px;
+border-radius: 15px;
+transition: all .3s;
+}
+
+.background-png {
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #666;
+  background-size: 280px;
+  background-image: url('../../assets/logo-open-live-gray.png');
+}
+  
+.screen {
+  display: flex;
+  position: relative;
+  width: 72%;
+}
+
+.background-loading {
+  display: flex;
+  position: relative;
+  width: 100%;
+  background-position: center;
+  background-color: #666;
+  background-size: 280px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.users-list {
+align-items: inline;
+float: right;
+margin-left: 60px;
+width: 30%;
+overflow: 'auto';
+background-color: 'silver';
+}
+.users-head {
+margin-left: 30px;
+}
+.users-head2{
+margin-left: 30px;
+margin-top: 20px;
+}
+.chat-field {
+float: left;
+display: flex;
+display: flexgit;
+margin-top: 20px;
+width: 100%;
+max-width: 1000px;
+height: 10%
+}
+
+
+.topMenu {
+position: absolute;
+display: flex;
+width: 100%;
+top: 0;
+left: 0;
+justify-content: space-between;
+z-index: 3;
+}
+
+.avatar-container {
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 44px;
+background: rgba(0, 0, 0, 0.4);
+border-radius: 24px;
+flex-direction: row;
+box-sizing: border-box;
+width: 200px;
+margin-left: 30px;
+margin-top: 30px;
+}
+
+.default-avatar {
+background-color: #fff de;
+background-image: url("../../assets/avatar.png");
+background-size: 38px;
+display: block;
+width: 38px;
+height: 38px;
+margin: 3px;
+margin-left: 0;
+border-radius: 28px;
+}
+
+.avatar-text {
+display: flex;
+justify-content: center;
+border-radius: 28px;
+width: 100px;
+height: 20px;
+align-items: center;
+border-radius: 10px;
+font-size: 16px;
+font-family: 'HelveticaNeue';
+color: rgba(255, 255, 255, 1);
+line-height: 14px;
+}
+
+.like {
+cursor: pointer;
+background-image: url("../../assets/icon-add-blue.png");
+background-size: 30px;
+display: block;
+width: 30px;
+height: 30px;
+margin: 4px;
+border-radius: 28px;
+}
+
+.like:hover {
+background-image: url("../../assets/icon-add-blue.png");
+}
+
+.quit {
+display: block;
+margin-top: 36px;
+margin-right: 36px;
+background-image: url("../../assets/icon-exit-hover.png");
+background-size: 32px;
+width: 32px;
+height: 32px;
+border-radius: 30px;
+z-index: 3;
+background-color: rgba(0, 0, 0, 0.4);
+cursor: pointer;
+}
+
+.quit:hover {
+background-color: #44a2fc;
+opacity: 1;
+}
+
+.mediaContainer {
+width: 100%;
+height: 100%;
+}
+
+.Audience-view{
+width: 100%;
+height: 100%;
+}
+
+.SettingsButton{
+position: absolute;
+top: 10px;
+right: 1px;
+z-index: 3;
+}
+
+.sender{
+clear:both;
+}
+.sender p:nth-of-type(1){
+float: left;
+
+}
+.sender p:nth-of-type(2){
+background-color: aquamarine;
+float: left;
+padding: 10px 10px 10px 5px;
+border-radius:7px;
+max-width: 80%;
+word-wrap:break-word;  
+word-break:break-all;
+text-align: left;
+}
+.receiver p:first-child img,
+.sender p:first-child img{
+width:50px;
+height: 50px;
+}
+
+.receiver{
+clear:both;
+}
+.receiver p:nth-child(1){
+float: right;
+}
+.receiver p:nth-of-type(2){
+float:right;
+background-color: gold;
+padding: 10px 5px 10px 10px;
+border-radius:7px;
+max-width: 80%;
+text-align: left;
+}
+.textbreak{
+margin-top: 10px;
+margin-left: 20px;
+word-wrap:break-word;  
+word-break:break-all;
+}
+.left_triangle{
+height:0px; 
+width:0px; 
+border-width:8px; 
+border-style:solid; 
+border-color:transparent aquamarine transparent transparent; 
+position: relative;
+top:4px;
+}
+
+.right_triangle{
+  height:0px; 
+  width:0px; 
+  border-width:8px; 
+  border-style:solid; 
+  border-color:transparent transparent transparent gold; 
+  position: relative;
+  top:4px;
+}
+.danmaku {
+  opacity: 0.01;
+}
+
+.danmaku-enter {
+  opacity: 1;
+  position: absolute;
+  left: 1100px;
+}
+
+.danmaku-enter.danmaku-enter-active {
+  opacity: .5;
+  position: absolute;
+  left: -100px;
+  transition: all 5000ms ease-in;
+}

@@ -1,0 +1,40 @@
+.RoomDetailModal {
+    position: 'absolute';
+    top: '50%';
+    left: '50%';
+    transform: 'translate(-50%, -50%)';
+    width: 400;
+    border: '2px solid #000';
+    padding: 4;
+}
+
+.auth-inner1 {
+    width: 600px;
+    margin: 11% 22%;
+    background: #ffffff;
+    box-shadow: 0px 14px 80px rgba(223, 31, 41, 0.13);
+    padding: 40px 55px 45px 55px;
+    border-radius: 15px;
+    transition: all 0.3s;
+}
+
+
+.CreateRoom {
+    float: left;
+    width: 300px;
+    margin-top: 40px;
+}
+
+.RoomList {
+    float: right;
+    width: 300px;
+}
+
+.Text {
+    text-align:center;
+}
+
+.test {
+    word-wrap:break-word; 
+    overflow:hidden;
+}

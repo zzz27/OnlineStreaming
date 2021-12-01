@@ -1,0 +1,10 @@
+asgiref==3.4.1
+Django==2.2.8
+dwebsocket==0.5.12
+pytz==2021.1
+setuptools==41.2.0
+sqlparse==0.4.2
+gunicorn==19.9.0
+prometheus-client==0.7.1
+psycopg2-binary==2.8.3
+
