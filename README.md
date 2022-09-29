@@ -4,7 +4,7 @@
 
 Version 1.0.0
 
-## Use Guild
+## Use Guide
 
 Front end:
 
