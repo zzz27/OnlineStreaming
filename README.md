@@ -1,4 +1,4 @@
-# This is the final project for Software Engineering class -- Group UnNamed
+# Online Streaming
 
 ## Release
 
